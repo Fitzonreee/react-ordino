@@ -2,13 +2,13 @@
 - A task tracking app built with React
 
 ## User Stories
-- [] User should be able to add a new task
-- [] User should be able to view all tasks
-- [] User should be able to mark task as complete
-- [] User should be able to delete tasks
-- [] User should be able to edit a task
-- [] User should be able to filter tasks by importance (label)
-- [] User should be able to refresh the page and have task data persist
+- [ ] User should be able to add a new task
+- [ ] User should be able to view all tasks
+- [ ] User should be able to mark task as complete
+- [ ] User should be able to delete tasks
+- [ ] User should be able to edit a task
+- [ ] User should be able to filter tasks by importance (label)
+- [ ] User should be able to refresh the page and have task data persist
 
 ## Tech Stack
 

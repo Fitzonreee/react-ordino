@@ -1,34 +1,53 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [input, setInput] = useState('')
+  const [items, setItems] = useState([])
+
+  // Add item
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    // Bail if input is empty
+    if (input.trim() === '') return
+    // Add items to state
+    setItems([...items, {
+      text: input,
+      completed: false
+    }])
+    // Reset input state to empty
+    setInput('')
+  }
+
+  // Remove item
+  const removeItem = (index) => {
+    // _ is the item, but is unused
+    const newItems = items.filter((_, i) => i !== index)
+    setItems(newItems)
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="container">
+      
+      <form className="form" onSubmit={handleSubmit}>
+        <input 
+          type="text"
+          value={input}
+          onChange={(e) => setInput(e.target.value)}
+        />
+        <button type='submit'>Add item</button>
+      </form>
+
+      <ul className="items">
+        {items.map((item, index) => (
+          <li key={index}>
+            <span>{item.text}</span>
+            <button onClick={() => removeItem(index)}>Remove</button>
+          </li>
+        ))}
+      </ul>
+
+    </div>
   )
 }
 

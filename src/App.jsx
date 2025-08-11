@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import './App.css'
+import styles from './App.module.scss'
 
 function App() {
   const [input, setInput] = useState('')
@@ -27,20 +27,24 @@ function App() {
   }
 
   return (
-    <div className="container">
+    <div className={styles.container}>
+
+      <h1 className="headline">oridino</h1>
       
-      <form className="form" onSubmit={handleSubmit}>
+      <form className={styles.form} onSubmit={handleSubmit}>
         <input 
           type="text"
+          name="add-item"
+          className={styles.formInput}
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
-        <button type='submit'>Add item</button>
+        <button type="submit">Add item</button>
       </form>
 
-      <ul className="items">
+      <ul className={styles.itemsList}>
         {items.map((item, index) => (
-          <li key={index}>
+          <li key={index} className={styles.itemsListItem}>
             <span>{item.text}</span>
             <button onClick={() => removeItem(index)}>Remove</button>
           </li>
